@@ -1,0 +1,19 @@
+1. Each sample is drawn from a normally distributed population since the p-values
+are greater than 5%, and we fail to reject the null hypothesis.
+
+2. A high result indicates that given input samples are from populations with
+equal variances.
+
+3. Since the p-value is greater than the commonly used significance level of
+0.05, we accept the null hypothesis that both groups are drawn from the
+populations with the same IGL mean surface brightness. This means that there
+is not enough evidence to suggest that the means of the groups are different.
+Therefore, we can't say that LSB features have a significant influence on
+the IGL mean surface brightness.
+
+But we can still see a difference between the mean `mean_mu` values. LSB
+features can affect the IGL mean surface brightness in several ways. For
+example, LSB features can be sources of diffuse gas and stars that have been
+stripped from galaxies, which can then contribute to the overall IGL signal.
+Additionally, LSB features can be sources of scattered light that can
+contribute to the overall surface brightness of the group.

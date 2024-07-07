@@ -1,0 +1,23 @@
+type: edu
+files:
+  - name: test/__init__.py
+    visible: false
+    learner_created: false
+  - name: test/tests.py
+    visible: false
+    learner_created: false
+  - name: solution.py
+    visible: true
+    learner_created: false
+  - name: tests.py
+    visible: false
+    learner_created: false
+  - name: answers.txt
+    visible: true
+    learner_created: true
+feedback_link: https://hyperskill.org/projects/249/stages/1249/implement#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 05 Jul 2024 21:33:59 UTC"
+record: 1
