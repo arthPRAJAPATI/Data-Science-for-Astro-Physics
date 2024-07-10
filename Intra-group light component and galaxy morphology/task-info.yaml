@@ -12,6 +12,9 @@ files:
   - name: tests.py
     visible: false
     learner_created: false
+  - name: answers.txt
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/projects/249/stages/1252/implement#comment
 status: Unchecked
-record: -1
+record: 4
