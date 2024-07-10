@@ -1,4 +1,9 @@
-1. The concentration of early-type galaxies is greater in groups of galaxies.
+We can see correlation:
+1. Lower value of mean Sersic index corresponds to higher IGL mean surface
+brightness. 
+2. Higher value of mean numerical Hubble stage corresponds to higher IGL mean
+surface brightness. 
 
-2. No. The resulting p-value indicates that we reject the null hypothesis
-that the two given samples are drawn from the same probability distribution.
+However, it is important to note that the relationship between IGL and mean
+Sersic index or Hubble stages can be complex and may vary depending on the
+specific group of galaxies being studied. 
