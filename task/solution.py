@@ -11,14 +11,21 @@ c_grp_df.dropna(inplace=True)
 # Read the galaxies_morphology dataset
 morphology_galaxy_df = pd.read_csv('/Users/arth/Downloads/galaxies_morphology.tsv', delimiter='\t')
 
-mean_sersic_df = morphology_galaxy_df.groupby(['Group']).agg(mean_n=('n', 'mean'),mean_T=('T', 'mean'))
+# Calculate the mean Sérsic index (n) and mean T for each group in the morphology_galaxy_df
+mean_sersic_df = morphology_galaxy_df.groupby(['Group']).agg(
+    mean_n=('n', 'mean'),
+    mean_T=('T', 'mean')
+)
 
+# Merge the mean Sérsic index and mean T values with the c_grp_df dataframe based on the 'Group' column
 new_data = c_grp_df.merge(mean_sersic_df, on=['Group'])
 
+# Extract the mean_n, mean_T, and mean_mu columns as numpy arrays
 mean_n = new_data['mean_n'].values
 mean_T = new_data['mean_T'].values
 mean_mu = new_data['mean_mu'].values
 
+# Plot scatter plot of mean_n vs. mean_mu
 plt.xlabel('<n>')
 plt.rcParams.update({
     "text.usetex": True,
@@ -30,6 +37,7 @@ plt.rcParams.update({
 plt.scatter(mean_n, mean_mu)
 plt.show()
 
+# Plot scatter plot of mean_T vs. mean_mu
 plt.xlabel('<T>')
 plt.rcParams.update({
     "text.usetex": True,
@@ -41,14 +49,18 @@ plt.rcParams.update({
 plt.scatter(mean_T, mean_mu)
 plt.show()
 
+# Perform the Shapiro-Wilk test for normality on mean_n, mean_T, and mean_mu
 shapiro_n = shapiro(mean_n)
 shapiro_T = shapiro(mean_T)
 shapiro_mu = shapiro(mean_mu)
 
+# Calculate the Pearson correlation coefficients and p-values for mean_n vs. mean_mu and mean_T vs. mean_mu
 pearson_n = pearsonr(mean_n, mean_mu)
 pearson_T = pearsonr(mean_T, mean_mu)
 
+# Print the p-values from the Shapiro-Wilk tests and the Pearson correlation tests
 print(f"{shapiro_mu.pvalue} {shapiro_n.pvalue} {shapiro_T.pvalue} {pearson_n.pvalue} {pearson_T.pvalue}")
+
 # Read the isolated_galaxies dataset
 # isolated_galaxy_df = pd.read_csv('/Users/arth/Downloads/isolated_galaxies.tsv', delimiter='\t')
 

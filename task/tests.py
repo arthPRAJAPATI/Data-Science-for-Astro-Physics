@@ -1,3 +1,3 @@
-from test.tests import Stage4Test
+from test.tests import Stage5Test
 
-if __name__ == '__main__':    Stage4Test().run_tests()
+if __name__ == '__main__':    Stage5Test().run_tests()
