@@ -16,5 +16,18 @@ files:
     visible: true
     learner_created: true
 feedback_link: https://hyperskill.org/projects/249/stages/1253/implement#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #1
+
+    The median separation in HCG 2 group is wrong.
+    Make sure that you provide numbers in the correct order.
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    3.8706e-02 7.7531e-05 6.4772e-01 5.2837e-02
+  time: "Thu, 11 Jul 2024 19:07:10 UTC"
 record: 5
