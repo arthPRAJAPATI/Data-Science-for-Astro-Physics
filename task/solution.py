@@ -29,30 +29,24 @@ grouped_galaxy = galaxy_coord_df[['Group', 'RA', 'DEC']].groupby(['Group'])
 
 # Initialize dictionaries to store median separations and separations
 median_sep = {}
-sep = []
 
 # Loop through each group
 for group_name in grouped_galaxy:
     group_data = grouped_galaxy.get_group(group_name[0])
+    sep = []
     # Create all possible pairs of galaxies within the group
-    combination = itertools.product(group_data['RA'], group_data['DEC'])
-    combination_iterator = iter(combination)
-    dA = c_grp_df.loc[c_grp_df['Group'] == str(group_name[0]).strip("(''),"), 'dA']
+    combination = itertools.combinations(zip(group_data['RA'], group_data['DEC']), 2)
+    dA = c_grp_df.loc[c_grp_df['Group'] == str(group_name[0]).strip("('',)"), 'dA']
     if dA.empty:
         continue
-    for ra, dec in combination_iterator:
-        try:
-            # Get the next RA and DEC values
-            next_ra, next_dec = next(combination_iterator)
-            # Create SkyCoord objects for the galaxies
-            p1 = SkyCoord(ra=ra * u.degree, dec=dec * u.degree, frame="fk5")
-            p2 = SkyCoord(ra=next_ra * u.degree, dec=next_dec * u.degree, frame="fk5")
-            # Calculate the angular separation
-            sep.append(p1.separation(p2).to(u.rad) * dA)
-        except StopIteration:
-            # Calculate the median separation and update the dictionary
+    for (ra1, dec1), (ra2, dec2) in combination:
+        # Create SkyCoord objects for the galaxies
+        p1 = SkyCoord(ra=ra1 * u.degree, dec=dec1 * u.degree, frame="fk5")
+        p2 = SkyCoord(ra=ra2 * u.degree, dec=dec2 * u.degree, frame="fk5")
+        # Calculate the angular separation
+        sep.append(p1.separation(p2).to(u.rad) * dA)
+        if sep:
             median_sep.update({str(group_name[0]).strip("(''),"): np.median(sep)})
-            sep.clear()
 
 # Convert the dictionary to a DataFrame
 distance_df = pd.DataFrame.from_dict(median_sep, orient='index')
@@ -64,6 +58,7 @@ mean_mu = c_grp_df.groupby('Group').agg({'mean_mu': 'mean'})
 
 # Merge the DataFrame with mean separations and mean surface brightness
 mean_mu = mean_mu.merge(distance_df, on=['Group'])
+mean_mu.dropna(inplace=True)
 
 # Plot the scatterplot for mean surface brightness and projected median separation
 plt.xlabel('R <kpc>')

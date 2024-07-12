@@ -1,9 +1,10 @@
-We can see correlation:
-1. Lower value of mean Sersic index corresponds to higher IGL mean surface
-brightness. 
-2. Higher value of mean numerical Hubble stage corresponds to higher IGL mean
-surface brightness. 
+The resulting p-value for testing the non-correlation indicates that there is
+a weak correlation. And the IGL mean surface brightness can be higher when
+galaxies are further from each other. This is because regions where galaxies
+are more widely spaced have less light pollution from stars and other
+luminous objects, which can make the IGL more visible. 
 
-However, it is important to note that the relationship between IGL and mean
-Sersic index or Hubble stages can be complex and may vary depending on the
-specific group of galaxies being studied. 
+However, it is important to note that the relationship between IGL surface
+brightness and distance between galaxies is complex and may depend on other
+factors such as the presence of dark matter and the specific properties of
+galaxies and their environments.
